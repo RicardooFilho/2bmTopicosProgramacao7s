@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="CREATE_TABLE_PESSOA" author="ricardo.filho">
+        <validCheckSum>ANY</validCheckSum>
+
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela PESSOA já existe.">
+            <not>
+                <tableExists tableName="PESSOA"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="PESSOA">
+            <column name="ID" type="${id}" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="PK_PESSOA"/>
+            </column>
+            <column name="NOME" type="${descricao255}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL" type="${descricao255}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
