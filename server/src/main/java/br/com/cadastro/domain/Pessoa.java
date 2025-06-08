@@ -2,6 +2,7 @@ package br.com.cadastro.domain;
 
 import br.com.cadastro.dto.RegisterDTO;
 import br.com.cadastro.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -33,6 +34,7 @@ public class Pessoa implements UserDetails {
     private String email;
 
     @NotNull
+    @JsonIgnore
     private String password;
 
     @NotNull
@@ -51,6 +53,7 @@ public class Pessoa implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (Role.ADMIN.equals(this.role)) {
             return List.of(
@@ -63,29 +66,34 @@ public class Pessoa implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public String getUsername() {
         return email;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
 
         return UserDetails.super.isAccountNonExpired();
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
 
         return UserDetails.super.isAccountNonLocked();
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
 
         return UserDetails.super.isCredentialsNonExpired();
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
 
         return UserDetails.super.isEnabled();

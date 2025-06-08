@@ -8,3 +8,8 @@ spring:
     password: postgres
   liquibase:
     change-log: classpath:/liquibase/master.xml
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:my_secret_key}

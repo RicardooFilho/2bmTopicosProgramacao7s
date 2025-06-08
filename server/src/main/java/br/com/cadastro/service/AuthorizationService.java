@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 @RequiredArgsConstructor
 public class AuthorizationService implements UserDetailsService {
@@ -19,7 +21,7 @@ public class AuthorizationService implements UserDetailsService {
 
     public void register(RegisterDTO registerDTO) {
 
-        if (loadUserByUsername(registerDTO.email()).isEnabled()) {
+        if (Objects.nonNull(loadUserByUsername(registerDTO.email()))) {
 
             throw new EntityExistsException();
         }

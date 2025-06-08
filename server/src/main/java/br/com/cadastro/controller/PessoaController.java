@@ -23,11 +23,12 @@ public class PessoaController {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @PostMapping
-    public ResponseEntity<Pessoa> create(@RequestBody @Valid Pessoa newPessoa) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Pessoa> findAll(@PathVariable(value = "id") Long id) {
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(newPessoa));
+        return ResponseEntity.ok(service.findById(id));
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(@PathVariable(value = "id") Long id, @RequestBody @Valid Pessoa newPessoa) {
@@ -38,7 +39,7 @@ public class PessoaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<List<Pessoa>> findAll(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<Void> delete(@PathVariable(value = "id") Long id) {
 
         service.delete(id);
 
