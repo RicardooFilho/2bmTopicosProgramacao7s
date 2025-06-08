@@ -18,7 +18,7 @@
             <column name="ID" type="${id}" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="PK_PESSOA"/>
             </column>
-            <column name="NOME" type="${descricao255}">
+            <column name="NAME" type="${descricao255}">
                 <constraints nullable="false"/>
             </column>
             <column name="EMAIL" type="${descricao255}">

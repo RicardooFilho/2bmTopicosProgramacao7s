@@ -21,6 +21,7 @@ import java.util.List;
 public class Pessoa implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
