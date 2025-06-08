@@ -29,8 +29,10 @@ public class Pessoa implements UserDetails {
     @NotNull
     private String email;
 
+    @NotNull
     private String password;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Role role;
 
