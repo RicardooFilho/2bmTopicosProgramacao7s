@@ -1,5 +1,6 @@
 package br.com.cadastro.domain;
 
+import br.com.cadastro.dto.RegisterDTO;
 import br.com.cadastro.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "pessoa")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -37,6 +39,16 @@ public class Pessoa implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public static Pessoa ofRegister(String encodedPassword, RegisterDTO registerDTO) {
+
+        Pessoa newPessoa = new Pessoa();
+        newPessoa.setName(registerDTO.name());
+        newPessoa.setEmail(registerDTO.email());
+        newPessoa.setRole(registerDTO.role());
+        newPessoa.setPassword(encodedPassword);
+
+        return newPessoa;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
