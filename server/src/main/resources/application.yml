@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: CadastroPessoas
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/cadastroPessoas
+    username: postgres
+    password: postgres
+  liquibase:
+    change-log: classpath:/liquibase/master.xml
