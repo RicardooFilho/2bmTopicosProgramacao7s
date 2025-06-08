@@ -24,6 +24,12 @@
             <column name="EMAIL" type="${descricao255}">
                 <constraints nullable="false"/>
             </column>
+            <column name="PASSWORD" type="${descricao255}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ROLE" type="${descricao255}">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
